@@ -1,0 +1,13 @@
+Análisis Lógico.
+
+¿Cuando debería mostrarme login y register?
+Cuando uno no este logueado 🆗
+
+¿Cuando debería mostrarse Mis datos?
+Cuando este logueado 🆗
+
+¿Cuando debería mostrarse Mis datos y Crear producto?
+Cuando uno se loguea y su rol es administrador
+
+Si desaparece el login y register,¿Que se debería mostrar en su lugar?
+Agregar un botón que cierre la sesión 🆗
