@@ -39,7 +39,7 @@ export const Header = () => {
             <NavDropdown title="Usuario" id="navbarScrollingDropdown">
               {!user.id ? (
                 <>
-                  <NavDropdown.Item onClick={loginUser}>
+                  <NavDropdown.Item as={Link} to="/login">
                     Iniciar sesión
                   </NavDropdown.Item>
                   <NavDropdown.Item as={Link} to="/register">

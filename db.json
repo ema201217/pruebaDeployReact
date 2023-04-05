@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "gonza2023",
+      "password": "12345gf",
+      "email": "gonzalo@gmail.com",
+      "rol": "REGULAR",
+      "avatar": "https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg"
+    },
+    {
+      "id": 2,
+      "username": "Fabri2023",
+      "password": "123345gf",
+      "email": "fabri@gmail.com",
+      "rol": "ADMIN",
+      "avatar": "https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg"
+    },
+    {
+      "username": "claudio31i",
+      "email": "claudio@gmail.com",
+      "password": "12345",
+      "rol": "REGULAR",
+      "avatar": "https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg",
+      "id": 3
+    },
+    {
+      "username": "eze31i",
+      "email": "ezequiel@gmail.com",
+      "password": "123123",
+      "rol": "REGULAR",
+      "avatar": "https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg",
+      "id": 4
+    }
+  ]
+}
