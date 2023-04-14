@@ -3,6 +3,7 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import bcrypt from 'bcryptjs'
 
 const ContainerButton = styled.div`
   display: flex;
@@ -64,11 +65,12 @@ export const Register = () => {
     }
 
 
+
     error ? setError('') : null
     const newUser = {
       username /* username: "dasdaso" */,
       email,
-      password,
+      password: bcrypt.hashSync(password),
       rol: "REGULAR",
       avatar:
         "https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg",

@@ -12,6 +12,8 @@ import { Login } from "./page/Login";
 import { ProfileUser } from "./page/ProfileUser";
 import { Register } from "./page/Register";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 function App() {
   const { user } = useContext(UserContext);
@@ -25,7 +27,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
 
         <Route path="/products" element={<ListProducts />} />
-        <Route path="/products/detail" element={<DetailProduct />} />
+        <Route path="/products/detail/:idProduct" element={<DetailProduct />} />
 
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

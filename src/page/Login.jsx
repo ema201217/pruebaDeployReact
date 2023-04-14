@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useContext, useState } from "react";
 import { UserContext } from "../contexts/userContext";
+import bcrypt from 'bcryptjs'
 
 const ContainerButton = styled.div`
   display: flex;
@@ -22,9 +23,9 @@ export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const {setUser} = useContext(UserContext)
-  const [error,setError] = useState('')
-  const redirect = useNavigate()
+  const { setUser } = useContext(UserContext);
+  const [error, setError] = useState("");
+  const redirect = useNavigate();
 
   /* MANEJADOR */
   const handleChangeEmail = (e) => {
@@ -37,23 +38,35 @@ export const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch(`http://localhost:3001/users?email=${email}`);
-    const user = await res.json();
-    const userObj = user[0]
-    
-    if(!userObj){
-      setError('El usuario no esta registrado')
-      return
+    if (!email || !password) {
+      setError("Ingresar email y contraseña");
+      return;
     }
 
-    if(password !== userObj.password){
-      setError('Credenciales Invalidas')
-      return
+    const res = await fetch(`http://localhost:3001/users?email=${email}`);
+    const user = await res.json();
+    const userObj = user[0];
+
+    if (!userObj) {
+      setError("El usuario no esta registrado");
+      return;
     }
-    
-    error ? setError('') : null
-    setUser(userObj)
-    redirect('/user/profile')
+
+
+    // if (password /* 1234 */ !== userObj.password) { /* $2a$10$M9UYBgyKa.uSgUknlenLBOcVbHIHHw23O.Ckt/iJvP9N/CXn6Eh22 */
+    //   setError("Credenciales Invalidas");
+    //   return;
+    // }
+
+    const isPasswordValid = bcrypt.compareSync(password, userObj.password)
+    if(!isPasswordValid){
+      setError("El password es invalido");
+      return;
+    }
+
+    error ? setError("") : null;
+    setUser(userObj);
+    redirect("/user/profile");
   };
 
   return (

@@ -3,9 +3,9 @@
     {
       "id": 1,
       "username": "gonza2023",
-      "password": "12345gf",
+      "password": "$2a$10$M9UYBgyKa.uSgUknlenLBOcVbHIHHw23O.Ckt/iJvP9N/CXn6Eh22",
       "email": "gonzalo@gmail.com",
-      "rol": "REGULAR",
+      "rol": "ADMIN",
       "avatar": "https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg"
     },
     {
@@ -19,7 +19,7 @@
     {
       "username": "claudio31i",
       "email": "claudio@gmail.com",
-      "password": "12345",
+      "password": "$2a$10$M9UYBgyKa.uSgUknlenLBOcVbHIHHw23O.Ckt/iJvP9N/CXn6Eh22",
       "rol": "REGULAR",
       "avatar": "https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg",
       "id": 3
@@ -27,10 +27,70 @@
     {
       "username": "eze31i",
       "email": "ezequiel@gmail.com",
-      "password": "123123",
+      "password": "$2a$10$M9UYBgyKa.uSgUknlenLBOcVbHIHHw23O.Ckt/iJvP9N/CXn6Eh22",
       "rol": "REGULAR",
       "avatar": "https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg",
       "id": 4
+    },
+    {
+      "username": "sadsasd",
+      "email": "maria_huerta@gmail.com",
+      "password": "$2a$10$M9UYBgyKa.uSgUknlenLBOcVbHIHHw23O.Ckt/iJvP9N/CXn6Eh22",
+      "rol": "REGULAR",
+      "avatar": "https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg",
+      "id": 5
+    },
+    {
+      "username": "admin123",
+      "email": "admin@gmail.com",
+      "password": "$2a$10$LqwE3cFb1AzRBesd07eCNOhMEgnIezji7X.rf6O.LX48rW3jwzrIu",
+      "rol": "REGULAR",
+      "avatar": "https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg",
+      "id": 6
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Samsung Galaxy A33 5g 128 Gb Awesome White 6 Gb Ram",
+      "description": "Fotografía profesional en tu bolsillo Descubrí infinitas posibilidades para tus fotos con las 4 cámaras principales de tu equipo. Poné a prueba tu creatividad y jugá con la iluminación, diferentes planos y efectos para obtener grandes resultados.",
+      "price": 141999,
+      "discount": 40,
+      "images": [
+        {
+          "primary": true,
+          "url": "https://http2.mlstatic.com/D_NQ_NP_766689-MLA50999944832_082022-O.webp"
+        },
+        {
+          "primary": false,
+          "url": "https://http2.mlstatic.com/D_NQ_NP_720182-MLA50999944834_082022-O.webp"
+        },
+        {
+          "primary": false,
+          "url": "https://http2.mlstatic.com/D_NQ_NP_2X_686525-MLA50999928890_082022-F.webp"
+        }
+      ]
+    },
+    {
+      "id": 23213,
+      "name": "Samsung Galaxy s22 5g",
+      "description": "Fotografía profesional en tu bolsillo Descubrí infinitas posibilidades para tus fotos con las 4 cámaras principales de tu equipo. Poné a prueba tu creatividad y jugá con la iluminación, diferentes planos y efectos para obtener grandes resultados.",
+      "price": 300999,
+      "discount": 33,
+      "images": [
+        {
+          "primary": true,
+          "url": "https://http2.mlstatic.com/D_NQ_NP_801065-MLA52415349406_112022-O.webp"
+        },
+        {
+          "primary": false,
+          "url": "https://http2.mlstatic.com/D_NQ_NP_792522-MLA52415345541_112022-O.webp"
+        },
+        {
+          "primary": false,
+          "url": "https://http2.mlstatic.com/D_NQ_NP_802170-MLA52415344522_112022-O.webp"
+        }
+      ]
     }
   ]
 }
