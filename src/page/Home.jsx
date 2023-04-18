@@ -21,8 +21,6 @@ export const Home = () => {
 
   return (
     <Layout>
-      <h1>PAGINA PRINCIPAL</h1>
-
       <Carousel>
         <Carousel.Item>
           <Image

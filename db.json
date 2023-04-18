@@ -58,14 +58,17 @@
       "discount": 40,
       "images": [
         {
+          "id":1,
           "primary": true,
           "url": "https://http2.mlstatic.com/D_NQ_NP_766689-MLA50999944832_082022-O.webp"
         },
         {
+          "id":2,
           "primary": false,
           "url": "https://http2.mlstatic.com/D_NQ_NP_720182-MLA50999944834_082022-O.webp"
         },
         {
+          "id":3,
           "primary": false,
           "url": "https://http2.mlstatic.com/D_NQ_NP_2X_686525-MLA50999928890_082022-F.webp"
         }
