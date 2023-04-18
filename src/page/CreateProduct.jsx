@@ -56,7 +56,7 @@ export const CreateProduct = () => {
                     alt=""
                   />
                 </Container>
-                <Form.Label>Imagen 1 - Activar primaria</Form.Label>
+                <Form.Label>Imagen 1</Form.Label>
 
                 <InputGroup>
                   <Form.Control type="text" placeholder="Ingresar imagen 1" />
@@ -76,12 +76,16 @@ export const CreateProduct = () => {
                       height: "100px",
                       objectFit: "contain",
                       margin: "auto",
+                      position: "relative",
                     }}
                     src={imageDefault}
                     alt=""
                   />
+                  <span className="position-absolute top-50 start-50 translate-middle rotate-3 fw-bold text-info">
+                    PRIMARIA
+                  </span>
                 </Container>
-                <Form.Label>Imagen 2 - Activar primaria</Form.Label>
+                <Form.Label>Imagen 2</Form.Label>
 
                 <InputGroup>
                   <Form.Control type="text" placeholder="Ingresar imagen 2" />
@@ -105,7 +109,7 @@ export const CreateProduct = () => {
                     alt=""
                   />
                 </Container>
-                <Form.Label>Imagen 3 - Activar primaria</Form.Label>
+                <Form.Label>Imagen 3</Form.Label>
 
                 <InputGroup>
                   <Form.Control type="text" placeholder="Ingresar imagen 3" />
