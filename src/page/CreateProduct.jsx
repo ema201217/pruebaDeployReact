@@ -1,14 +1,17 @@
-import { useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Layout } from "../Layouts/layout";
 import {
+  Alert,
   Button,
   Col,
   Container,
   Form,
   Image,
   InputGroup,
+  Modal,
   Row,
 } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 const imageDefault =
   "https://farmateambg.com/wp-content/plugins/ecommerce-product-catalog/img/no-default-thumbnail.png";
 
@@ -30,12 +33,21 @@ export const CreateProduct = () => {
       url: "",
     },
   ];
+  const redirect = useNavigate();
+  // STATES
   const [name, setName] = useState("");
-  const [price, setPrice] = useState(0);
-  const [discount, setDiscount] = useState(0);
+  const [price, setPrice] = useState("");
+  const [discount, setDiscount] = useState("");
   const [images, setImages] = useState(initialStateImages);
   const [description, setDescription] = useState("");
 
+  const [errorName, setErrorName] = useState("");
+  const [errorPrice, setErrorPrice] = useState("");
+  const [errorDescription, setErrorDescription] = useState("");
+  const [errorDiscount, setErrorDiscount] = useState("");
+  const [alert, setAlert] = useState({ show: false, msg: "" });
+
+  // HANDLERS
   const handleInputName = ({ target }) => {
     // event onChange
     setName(target.value);
@@ -71,6 +83,10 @@ export const CreateProduct = () => {
       images,
     };
 
+    const existError = validations();
+    if (existError) {
+      return;
+    }
 
     fetch("http://localhost:3001/products", {
       method: "POST",
@@ -79,9 +95,17 @@ export const CreateProduct = () => {
       },
       body: JSON.stringify(newProduct),
     }).then(() => {
+      setAlert({ show: true, msg: "Producto creado con éxito" });
+      setTimeout(() => {
+        redirect("/");
+      }, 3000);
       resetStatesAndForm();
     });
   };
+
+  useEffect(() => {
+    return () => setAlert({ show: false, msg: "" });
+  }, []);
 
   const handleInputImages = ({ target }) => {
     const imagesMapped = images.map((img) => {
@@ -113,11 +137,56 @@ export const CreateProduct = () => {
       }
       return img;
     });
-    setImages(imagesMappedPrimary)
+    setImages(imagesMappedPrimary);
+  };
+
+  const validations = () => {
+    let error = false;
+
+    if (!name) {
+      setErrorName("Campo nombre requerido");
+      error = true;
+    } else if (!isNaN(name)) {
+      setErrorName("Valor nombre invalido");
+    } else {
+      error = false;
+      setErrorName("");
+    }
+
+    if (!price) {
+      setErrorPrice("Campo precio requerido");
+      error = true;
+    } else if (isNaN(price)) {
+      setErrorPrice("Valor precio invalido");
+    } else {
+      error = false;
+      setErrorPrice("");
+    }
+
+    if (isNaN(discount)) {
+      setErrorDiscount("Valor descuento invalido");
+    }
+
+    if (!description) {
+      setErrorDescription("Campo descripción requerido");
+      error = true;
+    } else if (!isNaN(description)) {
+      setErrorPrice("Valor descripción invalido");
+    } else {
+      error = false;
+      setErrorDescription("");
+    }
+    return error;
   };
 
   return (
     <Layout>
+      <Modal show={alert.show}>
+        <Alert variant="success" className="m-0 text-center fw-bold">
+          {alert.msg}
+        </Alert>
+      </Modal>
+
       <h1 className="text-center my-2">NUEVO PRODUCTO</h1>
       <Form onSubmit={handleSubmit}>
         <Container className="mb-4">
@@ -132,6 +201,7 @@ export const CreateProduct = () => {
                   placeholder="Ingresar nombre"
                   onChange={handleInputName}
                 />
+                <Form.Text className="text-danger">{errorName}</Form.Text>
               </Form.Group>
             </Col>
             <Col md={12} lg={4}>
@@ -144,6 +214,7 @@ export const CreateProduct = () => {
                   placeholder="Ingresar precio"
                   onChange={handleInputPrice}
                 />
+                <Form.Text className="text-danger">{errorPrice}</Form.Text>
               </Form.Group>
             </Col>
             {/* DESCUENTO */}
@@ -156,6 +227,7 @@ export const CreateProduct = () => {
                   placeholder="Ingresar descuento"
                   onChange={handleInputDiscount}
                 />
+                <Form.Text className="text-danger">{errorDiscount}</Form.Text>
               </Form.Group>
             </Col>
 
@@ -173,13 +245,11 @@ export const CreateProduct = () => {
                     src={images[0].url ? images[0].url : imageDefault}
                     alt=""
                   />
-                  {
-                    images[0].primary ? (
-                      <span className="position-absolute top-50 start-50 translate-middle rotate-3 fw-bold text-info">
-                    PRIMARIA
-                  </span>
-                    ) : null
-                  }
+                  {images[0].primary ? (
+                    <span className="position-absolute top-50 start-50 translate-middle rotate-3 fw-bold text-info">
+                      PRIMARIA
+                    </span>
+                  ) : null}
                 </Container>
                 <Form.Label>Imagen 1</Form.Label>
 
@@ -216,13 +286,11 @@ export const CreateProduct = () => {
                     src={images[1].url ? images[1].url : imageDefault}
                     alt=""
                   />
-                  {
-                    images[1].primary ? (
-                      <span className="position-absolute top-50 start-50 translate-middle rotate-3 fw-bold text-info">
-                    PRIMARIA
-                  </span>
-                    ) : null
-                  }
+                  {images[1].primary ? (
+                    <span className="position-absolute top-50 start-50 translate-middle rotate-3 fw-bold text-info">
+                      PRIMARIA
+                    </span>
+                  ) : null}
                 </Container>
                 <Form.Label>Imagen 2</Form.Label>
 
@@ -258,13 +326,11 @@ export const CreateProduct = () => {
                     src={images[2].url ? images[2].url : imageDefault}
                     alt=""
                   />
-                  {
-                    images[2].primary ? (
-                      <span className="position-absolute top-50 start-50 translate-middle rotate-3 fw-bold text-info">
-                    PRIMARIA
-                  </span>
-                    ) : null
-                  }
+                  {images[2].primary ? (
+                    <span className="position-absolute top-50 start-50 translate-middle rotate-3 fw-bold text-info">
+                      PRIMARIA
+                    </span>
+                  ) : null}
                 </Container>
                 <Form.Label>Imagen 3</Form.Label>
 
@@ -299,6 +365,9 @@ export const CreateProduct = () => {
                   placeholder="Ingresar Descripción"
                   onChange={handleInputDescription}
                 />
+                <Form.Text className="text-danger">
+                  {errorDescription}
+                </Form.Text>
               </Form.Group>
             </Col>
             <Col md={6} lg={3}>
