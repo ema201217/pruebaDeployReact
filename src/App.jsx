@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { UserContext } from "./contexts/userContext";
 import { CheckPermission } from "./helpers/CheckPermission";
 import { About } from "./page/About";
