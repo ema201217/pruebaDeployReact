@@ -1,8 +1,10 @@
 import { useContext } from "react";
+import logo from "../../../public/logo.png";
 import {
   Button,
   Container,
   Form,
+  Image,
   Nav,
   Navbar,
   NavDropdown,
@@ -11,11 +13,13 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../../contexts/userContext";
 
 export const Header = () => {
-  const { user, logout, loginUser } = useContext(UserContext);
+  const { user, logout } = useContext(UserContext);
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
-        <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/">
+          <Image src={logo} alt="logo" />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
