@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { UserContext } from "./contexts/userContext";
 import { CheckPermission } from "./helpers/CheckPermission";
@@ -11,9 +11,10 @@ import { ListProducts } from "./page/ListProducts";
 import { Login } from "./page/Login";
 import { ProfileUser } from "./page/ProfileUser";
 import { Register } from "./page/Register";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import "slick-carousel/slick/slick.css"; 
+import "bootstrap/dist/css/bootstrap.min.css";
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { UpdateProduct } from "./page/UpdateProduct";
 
 function App() {
   const { user } = useContext(UserContext);
@@ -43,8 +44,17 @@ function App() {
         <Route
           path="/products/create"
           element={
-            <CheckPermission hasPermission={user.id && user.rol === "ADMIN"}>
+            // <CheckPermission hasPermission={user.id && user.rol === "ADMIN"}>
               <CreateProduct />
+            // </CheckPermission>
+          }
+        />
+
+        <Route
+          path="/products/update/:idProduct"
+          element={
+            <CheckPermission hasPermission={user.id && user.rol === "ADMIN"}>
+              <UpdateProduct />
             </CheckPermission>
           }
         />

@@ -31,14 +31,14 @@ export const Home = () => {
         </Carousel.Item>
       </Carousel>
 
-      <Slider dots={true} speed={500} slidesToShow={2} slidesToScroll={1}>
+      <Slider dots={true} speed={500} slidesToShow={4} slidesToScroll={2}>
         {products.map((product) => {
           return (
             <div key={product.id}>
               <Card style={{ width: "15rem" }} className="my-4 mx-auto">
                 <Card.Img
                   variant="top"
-                  src={product.images[0].url}
+                  src={product.images.find(img => img.primary)?.url}
                   style={{ height: "150px", objectFit: "contain" }}
                 />
                 <Card.Body>

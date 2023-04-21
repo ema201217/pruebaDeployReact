@@ -52,23 +52,23 @@
   "products": [
     {
       "id": 1,
-      "name": "Samsung Galaxy A33 5g 128 Gb Awesome White 6 Gb Ram",
+      "name": "",
       "description": "Fotografía profesional en tu bolsillo Descubrí infinitas posibilidades para tus fotos con las 4 cámaras principales de tu equipo. Poné a prueba tu creatividad y jugá con la iluminación, diferentes planos y efectos para obtener grandes resultados.",
       "price": 141999,
       "discount": 40,
       "images": [
         {
-          "id":1,
+          "id": 1,
           "primary": true,
           "url": "https://http2.mlstatic.com/D_NQ_NP_766689-MLA50999944832_082022-O.webp"
         },
         {
-          "id":2,
+          "id": 2,
           "primary": false,
           "url": "https://http2.mlstatic.com/D_NQ_NP_720182-MLA50999944834_082022-O.webp"
         },
         {
-          "id":3,
+          "id": 3,
           "primary": false,
           "url": "https://http2.mlstatic.com/D_NQ_NP_2X_686525-MLA50999928890_082022-F.webp"
         }
@@ -82,11 +82,11 @@
       "discount": 33,
       "images": [
         {
-          "primary": true,
+          "primary": false,
           "url": "https://http2.mlstatic.com/D_NQ_NP_801065-MLA52415349406_112022-O.webp"
         },
         {
-          "primary": false,
+          "primary": true,
           "url": "https://http2.mlstatic.com/D_NQ_NP_792522-MLA52415345541_112022-O.webp"
         },
         {
@@ -94,6 +94,150 @@
           "url": "https://http2.mlstatic.com/D_NQ_NP_802170-MLA52415344522_112022-O.webp"
         }
       ]
+    },
+    {
+      "name": "Computadoras Notebook Laptop Baratas Ssd 256gb 6gb Windows",
+      "price": 120000,
+      "discount": 10,
+      "description": "La notebook InnJoo Home Voom MAX Super es una solución tanto para trabajar y estudiar como para entretenerte. Al ser portátil, el escritorio dejará de ser tu único espacio de uso para abrirte las puertas a otros ambientes ya sea en tu casa o en la oficina.",
+      "images": [
+        {
+          "id": 1,
+          "primary": true,
+          "url": "https://http2.mlstatic.com/D_NQ_NP_827721-MLA52264149794_112022-O.webp"
+        },
+        {
+          "id": 2,
+          "primary": false,
+          "url": "https://http2.mlstatic.com/D_NQ_NP_783952-MLA52269190722_112022-O.webp"
+        },
+        {
+          "id": 3,
+          "primary": false,
+          "url": "https://http2.mlstatic.com/D_NQ_NP_783952-MLA52269190722_112022-O.webp"
+        }
+      ],
+      "id": 23214
+    },
+    {
+      "name": "Pc Gamer Armada Ryzen 5 4600g 12 Nucleo Amd Ram 16gb Ssd 480",
+      "price": 189000,
+      "discount": 20,
+      "description": "Hemos armado esta configuración de PC Gamer y Estudio de Diseño Grafico con procesador Ryzen 4600g Radeon Vega 7. Está armada con los componentes más potentes para que disfruten al máximo de sus videojuegos favoritos.",
+      "images": [
+        {
+          "id": 1,
+          "primary": false,
+          "url": "https://http2.mlstatic.com/D_NQ_NP_2X_736468-MLA54339629438_032023-F.webp"
+        },
+        {
+          "id": 2,
+          "primary": true,
+          "url": "https://http2.mlstatic.com/D_NQ_NP_2X_942714-MLA54382475089_032023-F.webp"
+        },
+        {
+          "id": 3,
+          "primary": false,
+          "url": "https://http2.mlstatic.com/D_NQ_NP_2X_616932-MLA54339881416_032023-F.webp"
+        }
+      ],
+      "id": 23215
+    },
+    {
+      "name": "Product",
+      "price": 2222,
+      "discount": 6,
+      "description": "description 222",
+      "images": [
+        {
+          "id": 1,
+          "primary": true,
+          "url": "https://http2.mlstatic.com/D_NQ_NP_2X_736468-MLA54339629438_032023-F.webp"
+        },
+        {
+          "id": 2,
+          "primary": false,
+          "url": "https://1.bp.blogspot.com/-kK7Fxm7U9o0/YN0bSIwSLvI/AAAAAAAACFk/aF4EI7XU_ashruTzTIpifBfNzb4thUivACLcBGAsYHQ/s1280/222.jpg"
+        },
+        {
+          "id": 3,
+          "primary": false,
+          "url": "https://http2.mlstatic.com/D_NQ_NP_2X_616932-MLA54339881416_032023-F.webp"
+        }
+      ],
+      "id": 23216
+    },
+    {
+      "name": "adsadsadss",
+      "price": 44,
+      "discount": 2,
+      "description": "Description",
+      "images": [
+        {
+          "id": 1,
+          "primary": true,
+          "url": "https://http2.mlstatic.com/D_NQ_NP_2X_736468-MLA54339629438_032023-F.webp"
+        },
+        {
+          "id": 2,
+          "primary": false,
+          "url": "https://http2.mlstatic.com/D_NQ_NP_2X_792138-MLA49999338136_052022-F.webp"
+        },
+        {
+          "id": 3,
+          "primary": false,
+          "url": "https://http2.mlstatic.com/D_NQ_NP_2X_792138-MLA49999338136_052022-F.webp"
+        }
+      ],
+      "id": 23217
+    },
+    {
+      "name": "PRODUCTO 123",
+      "price": 10000,
+      "discount": 10,
+      "description": "DESCRIPTION NOSE",
+      "images": [
+        {
+          "id": 1,
+          "primary": true,
+          "url": "https://1.bp.blogspot.com/-kK7Fxm7U9o0/YN0bSIwSLvI/AAAAAAAACFk/aF4EI7XU_ashruTzTIpifBfNzb4thUivACLcBGAsYHQ/s1280/222.jpg"
+        },
+        {
+          "id": 2,
+          "primary": false,
+          "url": "https://http2.mlstatic.com/D_NQ_NP_2X_942714-MLA54382475089_032023-F.webp"
+        },
+        {
+          "id": 3,
+          "primary": false,
+          "url": "https://http2.mlstatic.com/D_NQ_NP_2X_792138-MLA49999338136_052022-F.webp"
+        }
+      ],
+      "id": 23218
+    },
+    {
+      "name": "ULTIMO PRODUCTO",
+      "price": 2312,
+      "discount": 22,
+      "description": "",
+      "images": [
+        {
+          "id": 1,
+          "primary": false,
+          "url": "https://1.bp.blogspot.com/-kK7Fxm7U9o0/YN0bSIwSLvI/AAAAAAAACFk/aF4EI7XU_ashruTzTIpifBfNzb4thUivACLcBGAsYHQ/s1280/222.jpg"
+        },
+        {
+          "id": 2,
+          "primary": false,
+          "url": "https://1.bp.blogspot.com/-kK7Fxm7U9o0/YN0bSIwSLvI/AAAAAAAACFk/aF4EI7XU_ashruTzTIpifBfNzb4thUivACLcBGAsYHQ/s1280/222.jpg"
+        },
+        {
+          "id": 3,
+          "primary": true,
+          "url": "https://http2.mlstatic.com/D_NQ_NP_2X_616932-MLA54339881416_032023-F.webp"
+        }
+      ],
+      "id": 23219
     }
   ]
 }
