@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Layout } from "../Layouts/layout";
 import Slider from "react-slick";
-import { Image } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { Button, Col, Container, Image, Row } from "react-bootstrap";
+import { Link, useParams } from "react-router-dom";
 
 export const DetailProduct = () => {
   const params = useParams();
@@ -26,8 +26,12 @@ export const DetailProduct = () => {
 
   return (
     <Layout>
-      <div className="container my-5">
-        <div className="row">
+      <Container className="my-5">
+        <Row>
+          <Col md={12} className="d-flex justify-content-end gap-2">
+            <Button as={Link} to={`/products/update/${product.id}`}>Editar</Button>
+            <Button variant="danger">Eliminar</Button>
+          </Col>
           <Slider
             dots={true}
             speed={500}
@@ -70,8 +74,8 @@ export const DetailProduct = () => {
               </span>
             </p>
           </div>
-        </div>
-      </div>
+        </Row>
+      </Container>
     </Layout>
   );
 };

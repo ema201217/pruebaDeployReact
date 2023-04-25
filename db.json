@@ -142,6 +142,30 @@
         }
       ],
       "id": 23215
+    },
+    {
+      "name": "Colchón 1 plaza de espuma La Espumería Freestyle box gris claro - 80cm x 190cm x 20cm",
+      "price": 61379,
+      "discount": 64,
+      "description": "Un descanso reparador es la clave para disfrutar de un amanecer placentero. La Espumería Freestyle box brinda noches repletas de dulces sueños. Creado con materiales de calidad, asegura una experiencia saludable y duradera.\n\nDiseño moderno\nConstruido con espuma de poliuretano, el colchón tiene una larga y duradera vida. Este tipo de material hace que la posición que adopte el cuerpo sea ergonómica y permite que se reparta el peso sobre la superficie de manera balanceada.",
+      "images": [
+        {
+          "id": 1,
+          "primary": false,
+          "url": "https://http2.mlstatic.com/D_NQ_NP_713536-MLA53991269470_022023-O.webp"
+        },
+        {
+          "id": 2,
+          "primary": false,
+          "url": "https://http2.mlstatic.com/D_NQ_NP_905081-MLA53991269469_022023-O.webp"
+        },
+        {
+          "id": 3,
+          "primary": true,
+          "url": "https://http2.mlstatic.com/D_NQ_NP_848509-MLA53991266556_022023-O.webp"
+        }
+      ],
+      "id": 23216
     }
   ]
 }

@@ -53,9 +53,9 @@ function App() {
         <Route
           path="/products/update/:idProduct"
           element={
-            <CheckPermission hasPermission={user.id && user.rol === "ADMIN"}>
+            // <CheckPermission hasPermission={user.id && user.rol === "ADMIN"}>
               <UpdateProduct />
-            </CheckPermission>
+          //  </CheckPermission>
           }
         />
       </Routes>
