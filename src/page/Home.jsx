@@ -3,8 +3,7 @@ import { Layout } from "../Layouts/layout";
 import Slider from "react-slick";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
-const enfasis = (text) => text.length > 100 ? text.slice(0, 100) + "..." : text;
+import { enfasis } from "../helpers/enfasis";
 
 export const Home = () => {
   const [products, setProducts] = useState([]);

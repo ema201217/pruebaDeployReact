@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import logo from "../../../public/logo.png";
 import {
   Button,
@@ -9,11 +9,24 @@ import {
   Navbar,
   NavDropdown,
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/userContext";
 
 export const Header = () => {
   const { user, logout } = useContext(UserContext);
+  const redirect = useNavigate();
+  const [keyword, setKeyword] = useState("");
+
+  const handleKeyword = ({ target }) => {
+    setKeyword(target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    redirect(`/products?keyword=${keyword}`);
+  };
+
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
@@ -72,14 +85,17 @@ export const Header = () => {
               ) : null}
             </NavDropdown>
           </Nav>
-          <Form className="d-flex">
+          <Form className="d-flex" onSubmit={handleSubmit}>
             <Form.Control
               type="search"
               placeholder="Search"
               className="me-2"
               aria-label="Search"
+              onChange={handleKeyword}
             />
-            <Button variant="outline-success">Search</Button>
+            <Button type="submit" variant="outline-success">
+              🔍
+            </Button>
           </Form>
         </Navbar.Collapse>
       </Container>

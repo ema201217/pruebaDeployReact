@@ -1,21 +1,23 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useState } from "react";
 import { Layout } from "../Layouts/layout";
 import {
-  Alert,
   Button,
   Col,
   Container,
   Form,
   Image,
   InputGroup,
-  Modal,
   Row,
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
 const imageDefault =
   "https://farmateambg.com/wp-content/plugins/ecommerce-product-catalog/img/no-default-thumbnail.png";
 
 export const CreateProduct = () => {
+  const mySwal = withReactContent(Swal);
   const initialStateImages = [
     {
       id: 1,
@@ -45,7 +47,6 @@ export const CreateProduct = () => {
   const [errorPrice, setErrorPrice] = useState("");
   const [errorDescription, setErrorDescription] = useState("");
   const [errorDiscount, setErrorDiscount] = useState("");
-  const [alert, setAlert] = useState({ show: false, msg: "" });
 
   // HANDLERS
   const handleInputName = ({ target }) => {
@@ -95,17 +96,19 @@ export const CreateProduct = () => {
       },
       body: JSON.stringify(newProduct),
     }).then(() => {
-      setAlert({ show: true, msg: "Producto creado con éxito" });
-      setTimeout(() => {
-        redirect("/");
-      }, 3000);
       resetStatesAndForm();
+      mySwal
+        .fire({
+          title: "Producto creado con éxito",
+          timer: 2000,
+          showConfirmButton: false,
+          icon:'success'
+        })
+        .then(() => {
+          redirect("/");
+        });
     });
   };
-
-  useEffect(() => {
-    return () => setAlert({ show: false, msg: "" });
-  }, []);
 
   const handleInputImages = ({ target }) => {
     const imagesMapped = images.map((img) => {
@@ -181,12 +184,6 @@ export const CreateProduct = () => {
 
   return (
     <Layout>
-      <Modal show={alert.show}>
-        <Alert variant="success" className="m-0 text-center fw-bold">
-          {alert.msg}
-        </Alert>
-      </Modal>
-
       <h1 className="text-center my-2">NUEVO PRODUCTO</h1>
       <Form onSubmit={handleSubmit}>
         <Container className="mb-4">

@@ -1,0 +1,1 @@
+export const enfasis = (text) => text.length > 100 ? text.slice(0, 100) + "..." : text;

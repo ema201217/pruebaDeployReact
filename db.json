@@ -52,7 +52,7 @@
   "products": [
     {
       "id": 1,
-      "name": "",
+      "name": "Samsung A33",
       "description": "Fotografía profesional en tu bolsillo Descubrí infinitas posibilidades para tus fotos con las 4 cámaras principales de tu equipo. Poné a prueba tu creatividad y jugá con la iluminación, diferentes planos y efectos para obtener grandes resultados.",
       "price": 141999,
       "discount": 40,
@@ -97,7 +97,7 @@
     },
     {
       "name": "Computadoras Notebook Laptop Baratas Ssd 256gb 6gb Windows",
-      "price": 120000,
+      "price": 1111,
       "discount": 10,
       "description": "La notebook InnJoo Home Voom MAX Super es una solución tanto para trabajar y estudiar como para entretenerte. Al ser portátil, el escritorio dejará de ser tu único espacio de uso para abrirte las puertas a otros ambientes ya sea en tu casa o en la oficina.",
       "images": [
@@ -144,9 +144,9 @@
       "id": 23215
     },
     {
-      "name": "Colchón 1 plaza de espuma La Espumería Freestyle box gris claro - 80cm x 190cm x 20cm",
+      "name": "Colchón 1 plaza de espuma La Espumería Freestyle box gris claro",
       "price": 61379,
-      "discount": 64,
+      "discount": 5,
       "description": "Un descanso reparador es la clave para disfrutar de un amanecer placentero. La Espumería Freestyle box brinda noches repletas de dulces sueños. Creado con materiales de calidad, asegura una experiencia saludable y duradera.\n\nDiseño moderno\nConstruido con espuma de poliuretano, el colchón tiene una larga y duradera vida. Este tipo de material hace que la posición que adopte el cuerpo sea ergonómica y permite que se reparta el peso sobre la superficie de manera balanceada.",
       "images": [
         {
@@ -166,6 +166,54 @@
         }
       ],
       "id": 23216
+    },
+    {
+      "name": "Sony PlayStation 5 825GB God of War Ragnarok Bundle color blanco y negro",
+      "price": 469999,
+      "discount": 27,
+      "description": "Con tu consola PlayStation 5 tendrás entretenimiento asegurado todos los días. Su tecnología fue creada para poner nuevos retos tanto a jugadores principiantes como expertos.",
+      "images": [
+        {
+          "id": 1,
+          "primary": true,
+          "url": "https://http2.mlstatic.com/D_NQ_NP_714411-MLA52696806401_122022-O.webp"
+        },
+        {
+          "id": 2,
+          "primary": false,
+          "url": "https://http2.mlstatic.com/D_NQ_NP_802679-MLA52696885129_122022-O.webp"
+        },
+        {
+          "id": 3,
+          "primary": false,
+          "url": "https://http2.mlstatic.com/D_NQ_NP_817817-MLA54955377123_042023-O.webp"
+        }
+      ],
+      "id": 23217
+    },
+    {
+      "name": "Apple iPhone 11 (64 GB) - Negro",
+      "price": 349999,
+      "discount": 20,
+      "description": "Graba videos 4K y captura retratos espectaculares y paisajes increíbles con el sistema de dos cámaras. Toma grandes fotos con poca luz gracias al modo Noche. Disfruta colores reales en las fotos, videos y juegos con la pantalla Liquid Retina de 6.1 pulgadas (3). Aprovecha un rendimiento sin precedentes en los juegos, la realidad aumentada y la fotografía con el chip A13 Bionic. Haz mucho más sin necesidad de volver a cargar el teléfono gracias a su batería de larga duración (2). Y no te preocupes si se moja, el iPhone 11 tiene una resistencia al agua de hasta 30 minutos a una profundidad máxima de 2 metros (1).",
+      "images": [
+        {
+          "id": 1,
+          "primary": true,
+          "url": "https://http2.mlstatic.com/D_NQ_NP_656548-MLA46114829749_052021-O.webp"
+        },
+        {
+          "id": 2,
+          "primary": false,
+          "url": "https://http2.mlstatic.com/D_NQ_NP_702018-MLA46115014331_052021-O.webp"
+        },
+        {
+          "id": 3,
+          "primary": false,
+          "url": "https://http2.mlstatic.com/D_NQ_NP_971922-MLA46114829752_052021-O.webp"
+        }
+      ],
+      "id": 23218
     }
   ]
 }

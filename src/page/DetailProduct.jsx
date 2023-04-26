@@ -2,11 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Layout } from "../Layouts/layout";
 import Slider from "react-slick";
 import { Button, Col, Container, Image, Row } from "react-bootstrap";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 export const DetailProduct = () => {
+  const mySwal = withReactContent(Swal);
+  const redirect = useNavigate();
   const params = useParams();
-  let [product, setProduct] = useState({});
+  const [product, setProduct] = useState({});
   console.log(params.idProduct); // 1
 
   useEffect(() => {
@@ -24,13 +28,48 @@ export const DetailProduct = () => {
     minimumFractionDigits: 0,
   });
 
+  const handleDelete = () => {
+    mySwal
+      .fire({
+        title: "Estas seguro de eliminar el producto:",
+        text: product.name,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
+        confirmButtonText: "Eliminar",
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          fetch(`http://localhost:3001/products/${params.idProduct}`, {
+            method: "DELETE",
+          }).then(() => {
+            mySwal
+              .fire({
+                title: "Producto eliminado",
+                icon: "success",
+                timer: 2000,
+                showConfirmButton: false,
+              })
+              .then(() => {
+                redirect("/");
+              });
+          });
+        }
+      });
+  };
+
   return (
     <Layout>
       <Container className="my-5">
         <Row>
           <Col md={12} className="d-flex justify-content-end gap-2">
-            <Button as={Link} to={`/products/update/${product.id}`}>Editar</Button>
-            <Button variant="danger">Eliminar</Button>
+            <Button as={Link} to={`/products/update/${product.id}`}>
+              Editar
+            </Button>
+            <Button variant="danger" onClick={handleDelete}>
+              Eliminar
+            </Button>
           </Col>
           <Slider
             dots={true}
