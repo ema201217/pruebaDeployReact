@@ -9,17 +9,14 @@ import withReactContent from "sweetalert2-react-content";
 export const DetailProduct = () => {
   const mySwal = withReactContent(Swal);
   const redirect = useNavigate();
-  const params = useParams();
+  const { idProduct } = useParams();
   const [product, setProduct] = useState({});
-  console.log(params.idProduct); // 1
 
   useEffect(() => {
-    fetch(`http://localhost:3001/products?id=${params.idProduct}`)
+    fetch(`http://localhost:3030/products/${idProduct}`)
       .then((res) => res.json())
-      .then((product) => {
-        console.log("el producto encontrado es", product[0]);
-        setProduct(product[0]);
-      });
+      .then(({ data, ok }) => ok ? setProduct(data) : null)
+      .catch(err => console.error(err))
   }, []);
 
   const formatterPeso = new Intl.NumberFormat("es-CO", {
@@ -41,12 +38,14 @@ export const DetailProduct = () => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:3001/products/${params.idProduct}`, {
+          fetch(`http://localhost:3030/products/${idProduct}`, {
             method: "DELETE",
-          }).then(() => {
+          })
+          .then(res => res.json())
+          .then(({message}) => {
             mySwal
               .fire({
-                title: "Producto eliminado",
+                title: message,
                 icon: "success",
                 timer: 2000,
                 showConfirmButton: false,
@@ -64,7 +63,7 @@ export const DetailProduct = () => {
       <Container className="my-5">
         <Row>
           <Col md={12} className="d-flex justify-content-end gap-2">
-            <Button as={Link} to={`/products/update/${product.id}`}>
+            <Button as={Link} to={`/products/update/${product._id}`}>
               Editar
             </Button>
             <Button variant="danger" onClick={handleDelete}>
@@ -79,17 +78,17 @@ export const DetailProduct = () => {
           >
             {product.images
               ? product.images.map((image, index) => {
-                  return (
-                    <div key={index}>
-                      <Image
-                        style={{ height: "200px" }}
-                        src={image.url}
-                        alt=""
-                        className="m-auto"
-                      />
-                    </div>
-                  );
-                })
+                return (
+                  <div key={index}>
+                    <Image
+                      style={{ height: "200px" }}
+                      src={image.url}
+                      alt=""
+                      className="m-auto"
+                    />
+                  </div>
+                );
+              })
               : null}
           </Slider>
 

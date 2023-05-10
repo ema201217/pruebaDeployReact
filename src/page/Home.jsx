@@ -4,18 +4,19 @@ import Slider from "react-slick";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { enfasis } from "../helpers/enfasis";
+const HOST_SERVER = import.meta.env.VITE_HOST_SERVER
 
 export const Home = () => {
   const [products, setProducts] = useState([]);
-
   useEffect(() => {
     /* Cuando se monta la vista Home */
 
-    fetch("http://localhost:3001/products")
+    fetch(`${HOST_SERVER}/products`)
       .then((res) => res.json())
-      .then((products) => {
-        setProducts(products);
-      });
+      .then(({ok,data}) => {
+        ok ? setProducts(data) : null; 
+      })
+      .catch(err => console.error(err))
   }, []);
 
   return (
@@ -45,7 +46,7 @@ export const Home = () => {
                   <Card.Text style={{ fontSize: ".7rem" }}>
                     {enfasis(product.description)}
                   </Card.Text>
-                  <Button as={Link} to={`/products/detail/${product.id}`} variant="primary" className="btn-sm">
+                  <Button as={Link} to={`/products/detail/${product._id}`} variant="primary" className="btn-sm">
                     Ver mas
                   </Button>
                 </Card.Body>

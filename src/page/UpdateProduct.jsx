@@ -109,24 +109,26 @@ export const UpdateProduct = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:3001/products/${idProduct}`)
+    fetch(`http://localhost:3030/products/${idProduct}`)
       .then((res) => res.json())
-      .then((data) => setProduct(data));
+      .then(({data, ok}) => ok ? setProduct(data) : null);
   }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch(`http://localhost:3001/products/${idProduct}`, {
+    fetch(`http://localhost:3030/products/${idProduct}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(product),
-    }).then(() => {
+    })
+    .then(res => res.json())
+    .then(({message}) => {
       mySwal
         .fire({
-          title: "Producto editado con éxito",
+          title: message,
           icon: "success",
           showConfirmButton: false,
           timer: 2000,

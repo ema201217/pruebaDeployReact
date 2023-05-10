@@ -4,23 +4,25 @@ import { Link, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { enfasis } from "../helpers/enfasis";
-
+const HOST_SERVER = import.meta.env.VITE_HOST_SERVER
 export const ListProducts = () => {
   const [query] = useSearchParams();
   const redirect = useNavigate()
   const keyword = query.get("keyword");
   const [products, setProducts] = useState([]);
 
+  
   useEffect(() => {
-    fetch(`http://localhost:3001/products?q=${keyword}`)
+    fetch(`${HOST_SERVER}/products?q=${keyword}`)
       .then((res) => res.json())
-      .then((data) => setProducts(data));
-
-      if(!keyword){
-        fetch(`http://localhost:3001/products`)
+      .then(({ data, ok }) => ok ? setProducts(data) : null)
+      .catch(err =>console.error(err))
+    if (!keyword) {
+      fetch(`${HOST_SERVER}/products`)
         .then((res) => res.json())
-        .then((data) => setProducts(data));
-      }
+        .then(({data, ok}) => ok ? setProducts(data) : null)
+        .catch(err =>console.error(err))
+    }
 
   }, [keyword]);
 
@@ -45,7 +47,7 @@ export const ListProducts = () => {
                     </Card.Text>
                     <Button
                       as={Link}
-                      to={`/products/detail/${product.id}`}
+                      to={`/products/detail/${product._id}`}
                       variant="primary"
                       className="btn-sm"
                     >

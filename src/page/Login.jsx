@@ -43,29 +43,24 @@ export const Login = () => {
       return;
     }
 
-    const res = await fetch(`http://localhost:3001/users?email=${email}`);
-    const user = await res.json();
-    const userObj = user[0];
-
-    if (!userObj) {
-      setError("El usuario no esta registrado");
-      return;
-    }
-
-
-    // if (password /* 1234 */ !== userObj.password) { /* $2a$10$M9UYBgyKa.uSgUknlenLBOcVbHIHHw23O.Ckt/iJvP9N/CXn6Eh22 */
-    //   setError("Credenciales Invalidas");
-    //   return;
-    // }
-
-    const isPasswordValid = bcrypt.compareSync(password, userObj.password)
-    if(!isPasswordValid){
-      setError("El password es invalido");
-      return;
+    const res = await fetch(`http://localhost:3030/users/login`, {
+      method: 'POST',
+      body: JSON.stringify({
+        email,
+        password
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    const response = await res.json();
+    if (!response.ok) {
+      setError(response.message)
+      return
     }
 
     error ? setError("") : null;
-    setUser(userObj);
+    setUser(response.data);
     redirect("/user/profile");
   };
 

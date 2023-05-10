@@ -89,18 +89,20 @@ export const CreateProduct = () => {
       return;
     }
 
-    fetch("http://localhost:3001/products", {
+    fetch("http://localhost:3030/products", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newProduct),
-    }).then(() => {
+    })
+    .then(res => res.json())
+    .then(({message}) => {
       resetStatesAndForm();
       mySwal
         .fire({
-          title: "Producto creado con éxito",
-          timer: 2000,
+          title: message,
+          timer: 3000,
           showConfirmButton: false,
           icon:'success'
         })

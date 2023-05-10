@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import bcrypt from 'bcryptjs'
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const ContainerButton = styled.div`
   display: flex;
@@ -23,7 +25,9 @@ export const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
-  const [error,setError] = useState('')
+  const [error, setError] = useState('')
+
+  const swal = withReactContent(Swal)
 
   /* handlers */
   const handleChangeEmail = (e) => {
@@ -42,7 +46,7 @@ export const Register = () => {
     setPassword2(e.target.value);
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!email || !username || !password || !password2) {
@@ -50,21 +54,10 @@ export const Register = () => {
       return
     }
 
-    const res = await fetch(`http://localhost:3001/users?email=${email}`);
-    const user = await res.json();
-    const userObj = user[0]
-
-    if(userObj){
-      setError("El usuario ya esta registrado con ese email")
-      return
-    }
-
-    if(password !== password2){
+    if (password !== password2) {
       setError("Las contraseñas no coinciden")
       return
     }
-
-
 
     error ? setError('') : null
     const newUser = {
@@ -74,17 +67,34 @@ export const Register = () => {
       rol: "REGULAR",
       avatar:
         "https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg",
+      available: false
     };
 
-    fetch("http://localhost:3001/users", {
+    fetch("http://localhost:3030/users/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newUser),
-    });
+    })
+      .then(res => res.json())
+      .then(response => {
+        if (!response.ok) {
+          setError(response.message)
+          return
+        }
 
-    redirect('/login')
+        swal.fire({
+          title: response.message,
+          text: response.message2,
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 5000
+        }).then(() => {
+          redirect('/')
+        })
+      })
+
   };
 
   return (
