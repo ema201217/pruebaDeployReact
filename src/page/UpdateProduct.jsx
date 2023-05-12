@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Layout } from "../Layouts/layout";
 import {
   Button,
@@ -12,6 +12,7 @@ import {
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { UserContext } from "../contexts/userContext";
 
 const imageDefault =
   "https://farmateambg.com/wp-content/plugins/ecommerce-product-catalog/img/no-default-thumbnail.png";
@@ -46,7 +47,7 @@ export const UpdateProduct = () => {
     ],
   };
   const [product, setProduct] = useState(initialStateProduct);
-
+  const { token } = useContext(UserContext);
   const handleName = ({ target }) => {
     setProduct({
       ...product,
@@ -111,7 +112,7 @@ export const UpdateProduct = () => {
   useEffect(() => {
     fetch(`http://localhost:3030/products/${idProduct}`)
       .then((res) => res.json())
-      .then(({data, ok}) => ok ? setProduct(data) : null);
+      .then(({ data, ok }) => (ok ? setProduct(data) : null));
   }, []);
 
   const handleSubmit = (e) => {
@@ -121,22 +122,23 @@ export const UpdateProduct = () => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        Authorization: token,
       },
       body: JSON.stringify(product),
     })
-    .then(res => res.json())
-    .then(({message}) => {
-      mySwal
-        .fire({
-          title: message,
-          icon: "success",
-          showConfirmButton: false,
-          timer: 2000,
-        })
-        .then(() => {
-          redirect(`/products/detail/${idProduct}`);
-        });
-    });
+      .then((res) => res.json())
+      .then(({ ok, message }) => {
+        mySwal
+          .fire({
+            title: message,
+            icon: ok ? "success" : "error",
+            showConfirmButton: false,
+            timer: 2000,
+          })
+          .then(() => {
+            ok ? redirect(`/products/detail/${idProduct}`) : redirect("/login");
+          });
+      });
   };
 
   return (

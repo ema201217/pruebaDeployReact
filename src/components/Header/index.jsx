@@ -54,7 +54,7 @@ export const Header = () => {
             </Nav.Link>
 
             <NavDropdown title="Usuario" id="navbarScrollingDropdown">
-              {!user.id ? (
+              {!user._id ? (
                 <>
                   <NavDropdown.Item as={Link} to="/login">
                     Iniciar sesión
@@ -69,7 +69,7 @@ export const Header = () => {
                 </NavDropdown.Item>
               )}
 
-              {user.id ? (
+              {user._id ? (
                 <>
                   <NavDropdown.Divider />
                   <NavDropdown.Item as={Link} to="/user/profile">
@@ -78,7 +78,7 @@ export const Header = () => {
                 </>
               ) : null}
 
-              {user.id && user.rol === "ADMIN" ? (
+              {user._id && user.rol === "ADMIN" ? (
                 <NavDropdown.Item as={Link} to="/products/create">
                   Crear producto
                 </NavDropdown.Item>

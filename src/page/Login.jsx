@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useContext, useState } from "react";
 import { UserContext } from "../contexts/userContext";
-import bcrypt from 'bcryptjs'
 
 const ContainerButton = styled.div`
   display: flex;
@@ -23,7 +22,7 @@ export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { setUser } = useContext(UserContext);
+  const { setUser,setToken } = useContext(UserContext);
   const [error, setError] = useState("");
   const redirect = useNavigate();
 
@@ -61,6 +60,8 @@ export const Login = () => {
 
     error ? setError("") : null;
     setUser(response.data);
+    setToken(response.token)
+    window.localStorage.setItem('token',response.token)
     redirect("/user/profile");
   };
 

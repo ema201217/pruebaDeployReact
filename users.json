@@ -1,6 +1,5 @@
 [
     {
-      "id": 1,
       "username": "gonza2023",
       "password": "$2a$10$M9UYBgyKa.uSgUknlenLBOcVbHIHHw23O.Ckt/iJvP9N/CXn6Eh22",
       "email": "gonzalo@gmail.com",
@@ -8,7 +7,6 @@
       "avatar": "https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg"
     },
     {
-      "id": 2,
       "username": "Fabri2023",
       "password": "123345gf",
       "email": "fabri@gmail.com",
@@ -20,8 +18,8 @@
       "email": "claudio@gmail.com",
       "password": "$2a$10$M9UYBgyKa.uSgUknlenLBOcVbHIHHw23O.Ckt/iJvP9N/CXn6Eh22",
       "rol": "REGULAR",
-      "avatar": "https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg",
-      "id": 3
+      "avatar": "https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg"
+
     },
     {
       "username": "eze31i",
@@ -36,15 +34,13 @@
       "email": "maria_huerta@gmail.com",
       "password": "$2a$10$M9UYBgyKa.uSgUknlenLBOcVbHIHHw23O.Ckt/iJvP9N/CXn6Eh22",
       "rol": "REGULAR",
-      "avatar": "https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg",
-      "id": 5
+      "avatar": "https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg"
     },
     {
       "username": "admin123",
       "email": "admin@gmail.com",
       "password": "$2a$10$LqwE3cFb1AzRBesd07eCNOhMEgnIezji7X.rf6O.LX48rW3jwzrIu",
       "rol": "REGULAR",
-      "avatar": "https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg",
-      "id": 6
+      "avatar": "https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg"
     }
   ]

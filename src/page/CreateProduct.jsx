@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Layout } from "../Layouts/layout";
 import {
   Button,
@@ -12,6 +12,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { UserContext } from "../contexts/userContext";
 
 const imageDefault =
   "https://farmateambg.com/wp-content/plugins/ecommerce-product-catalog/img/no-default-thumbnail.png";
@@ -47,6 +48,8 @@ export const CreateProduct = () => {
   const [errorPrice, setErrorPrice] = useState("");
   const [errorDescription, setErrorDescription] = useState("");
   const [errorDiscount, setErrorDiscount] = useState("");
+
+  const { token } = useContext(UserContext);
 
   // HANDLERS
   const handleInputName = ({ target }) => {
@@ -93,23 +96,24 @@ export const CreateProduct = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: token,
       },
       body: JSON.stringify(newProduct),
     })
-    .then(res => res.json())
-    .then(({message}) => {
-      resetStatesAndForm();
-      mySwal
-        .fire({
-          title: message,
-          timer: 3000,
-          showConfirmButton: false,
-          icon:'success'
-        })
-        .then(() => {
-          redirect("/");
-        });
-    });
+      .then((res) => res.json())
+      .then(({ ok, message }) => {
+        resetStatesAndForm();
+        mySwal
+          .fire({
+            title: message,
+            timer: 3000,
+            showConfirmButton: false,
+            icon: ok ? "success" : "error",
+          })
+          .then(() => {
+            ok ? redirect("/") : redirect("/login");
+          });
+      });
   };
 
   const handleInputImages = ({ target }) => {

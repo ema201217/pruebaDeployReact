@@ -1,22 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Layout } from "../Layouts/layout";
 import Slider from "react-slick";
 import { Button, Col, Container, Image, Row } from "react-bootstrap";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { UserContext } from "../contexts/userContext";
 
 export const DetailProduct = () => {
   const mySwal = withReactContent(Swal);
   const redirect = useNavigate();
   const { idProduct } = useParams();
   const [product, setProduct] = useState({});
+  const { user, token } = useContext(UserContext);
 
   useEffect(() => {
     fetch(`http://localhost:3030/products/${idProduct}`)
       .then((res) => res.json())
-      .then(({ data, ok }) => ok ? setProduct(data) : null)
-      .catch(err => console.error(err))
+      .then(({ data, ok }) => (ok ? setProduct(data) : null))
+      .catch((err) => console.error(err));
   }, []);
 
   const formatterPeso = new Intl.NumberFormat("es-CO", {
@@ -40,20 +42,26 @@ export const DetailProduct = () => {
         if (result.isConfirmed) {
           fetch(`http://localhost:3030/products/${idProduct}`, {
             method: "DELETE",
+            headers: {
+              'Authorization': token,
+              'Content-Type' : 'application/json'
+            },
           })
-          .then(res => res.json())
-          .then(({message}) => {
-            mySwal
-              .fire({
-                title: message,
-                icon: "success",
-                timer: 2000,
-                showConfirmButton: false,
-              })
-              .then(() => {
-                redirect("/");
-              });
-          });
+            .then((res) => res.json())
+            .then(({ ok, message }) => {
+
+              console.log({ ok, message })
+              mySwal
+                .fire({
+                  title: message,
+                  icon: ok ? "success" : "error",
+                  timer: 2000,
+                  showConfirmButton: false,
+                })
+                .then(() => {
+                  ok ? redirect("/") : redirect("/login");
+                });
+            });
         }
       });
   };
@@ -62,14 +70,17 @@ export const DetailProduct = () => {
     <Layout>
       <Container className="my-5">
         <Row>
-          <Col md={12} className="d-flex justify-content-end gap-2">
-            <Button as={Link} to={`/products/update/${product._id}`}>
-              Editar
-            </Button>
-            <Button variant="danger" onClick={handleDelete}>
-              Eliminar
-            </Button>
-          </Col>
+          {user._id && user.rol === "ADMIN" ? (
+            <Col md={12} className="d-flex justify-content-end gap-2">
+              <Button as={Link} to={`/products/update/${product._id}`}>
+                Editar
+              </Button>
+              <Button variant="danger" onClick={handleDelete}>
+                Eliminar
+              </Button>
+            </Col>
+          ) : null}
+
           <Slider
             dots={true}
             speed={500}
@@ -78,17 +89,17 @@ export const DetailProduct = () => {
           >
             {product.images
               ? product.images.map((image, index) => {
-                return (
-                  <div key={index}>
-                    <Image
-                      style={{ height: "200px" }}
-                      src={image.url}
-                      alt=""
-                      className="m-auto"
-                    />
-                  </div>
-                );
-              })
+                  return (
+                    <div key={index}>
+                      <Image
+                        style={{ height: "200px" }}
+                        src={image.url}
+                        alt=""
+                        className="m-auto"
+                      />
+                    </div>
+                  );
+                })
               : null}
           </Slider>
 

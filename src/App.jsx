@@ -30,13 +30,28 @@ function App() {
         <Route path="/products" element={<ListProducts />} />
         <Route path="/products/detail/:idProduct" element={<DetailProduct />} />
 
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route
+          path="/login"
+          element={
+            <CheckPermission hasPermission={!user._id} redirect="/user/profile">
+              <Login />
+            </CheckPermission>
+          }
+        />
+
+        <Route
+          path="/register"
+          element={
+            <CheckPermission hasPermission={!user._id} redirect="/user/profile">
+              <Register />
+            </CheckPermission>
+          }
+        />
 
         <Route
           path="/user/profile"
           element={
-            <CheckPermission hasPermission={user.id} redirect="/login">
+            <CheckPermission hasPermission={user._id} redirect="/login">
               <ProfileUser />
             </CheckPermission>
           }
@@ -44,18 +59,18 @@ function App() {
         <Route
           path="/products/create"
           element={
-            // <CheckPermission hasPermission={user.id && user.rol === "ADMIN"}>
+            <CheckPermission hasPermission={user._id && user.rol === "ADMIN"}>
               <CreateProduct />
-            // </CheckPermission>
+            </CheckPermission>
           }
         />
 
         <Route
           path="/products/update/:idProduct"
           element={
-            // <CheckPermission hasPermission={user.id && user.rol === "ADMIN"}>
+            <CheckPermission hasPermission={user._id && user.rol === "ADMIN"}>
               <UpdateProduct />
-          //  </CheckPermission>
+            </CheckPermission>
           }
         />
       </Routes>

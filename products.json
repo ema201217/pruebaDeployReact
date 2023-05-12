@@ -1,6 +1,6 @@
 [
     {
-      "id": 1,
+     
       "name": "Samsung A33",
       "description": "Fotografía profesional en tu bolsillo Descubrí infinitas posibilidades para tus fotos con las 4 cámaras principales de tu equipo. Poné a prueba tu creatividad y jugá con la iluminación, diferentes planos y efectos para obtener grandes resultados.",
       "price": 141999,
@@ -24,7 +24,7 @@
       ]
     },
     {
-      "id": 23213,
+      
       "name": "Samsung Galaxy s22 5g",
       "description": "Fotografía profesional en tu bolsillo Descubrí infinitas posibilidades para tus fotos con las 4 cámaras principales de tu equipo. Poné a prueba tu creatividad y jugá con la iluminación, diferentes planos y efectos para obtener grandes resultados.",
       "price": 300999,
@@ -65,8 +65,8 @@
           "primary": false,
           "url": "https://http2.mlstatic.com/D_NQ_NP_783952-MLA52269190722_112022-O.webp"
         }
-      ],
-      "id": 23214
+      ]
+     
     },
     {
       "name": "Pc Gamer Armada Ryzen 5 4600g 12 Nucleo Amd Ram 16gb Ssd 480",
@@ -89,8 +89,7 @@
           "primary": false,
           "url": "https://http2.mlstatic.com/D_NQ_NP_2X_616932-MLA54339881416_032023-F.webp"
         }
-      ],
-      "id": 23215
+      ]
     },
     {
       "name": "Colchón 1 plaza de espuma La Espumería Freestyle box gris claro",
@@ -113,8 +112,7 @@
           "primary": true,
           "url": "https://http2.mlstatic.com/D_NQ_NP_848509-MLA53991266556_022023-O.webp"
         }
-      ],
-      "id": 23216
+      ]
     },
     {
       "name": "Sony PlayStation 5 825GB God of War Ragnarok Bundle color blanco y negro",
@@ -137,8 +135,7 @@
           "primary": false,
           "url": "https://http2.mlstatic.com/D_NQ_NP_817817-MLA54955377123_042023-O.webp"
         }
-      ],
-      "id": 23217
+      ]
     },
     {
       "name": "Apple iPhone 11 (64 GB) - Negro",
@@ -161,7 +158,6 @@
           "primary": false,
           "url": "https://http2.mlstatic.com/D_NQ_NP_971922-MLA46114829752_052021-O.webp"
         }
-      ],
-      "id": 23218
+      ]
     }
   ]
