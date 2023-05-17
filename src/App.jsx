@@ -15,6 +15,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { UpdateProduct } from "./page/UpdateProduct";
+import { Admin } from "./page/Admin";
 
 function App() {
   const { user } = useContext(UserContext);
@@ -61,6 +62,15 @@ function App() {
           element={
             <CheckPermission hasPermission={user._id && user.rol === "ADMIN"}>
               <CreateProduct />
+            </CheckPermission>
+          }
+        />
+
+        <Route
+          path="/users/admin"
+          element={
+            <CheckPermission hasPermission={user._id && user.rol === "ADMIN"}>
+              <Admin />
             </CheckPermission>
           }
         />

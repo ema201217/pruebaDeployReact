@@ -136,7 +136,7 @@ export const UpdateProduct = () => {
             timer: 2000,
           })
           .then(() => {
-            ok ? redirect(`/products/detail/${idProduct}`) : redirect("/login");
+            ok ? redirect(`/users/admin`) : redirect("/login");
           });
       });
   };

@@ -79,8 +79,8 @@ export const Header = () => {
               ) : null}
 
               {user._id && user.rol === "ADMIN" ? (
-                <NavDropdown.Item as={Link} to="/products/create">
-                  Crear producto
+                <NavDropdown.Item as={Link} to="/users/admin">
+                  Administrar
                 </NavDropdown.Item>
               ) : null}
             </NavDropdown>

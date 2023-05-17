@@ -4,19 +4,21 @@ import Slider from "react-slick";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { enfasis } from "../helpers/enfasis";
-const HOST_SERVER = import.meta.env.VITE_HOST_SERVER
+const HOST_SERVER = import.meta.env.VITE_HOST_SERVER;
 
 export const Home = () => {
   const [products, setProducts] = useState([]);
+  const [slidesToShow, setSlidesToShow] = useState(1);
   useEffect(() => {
     /* Cuando se monta la vista Home */
 
     fetch(`${HOST_SERVER}/products`)
       .then((res) => res.json())
-      .then(({ok,data}) => {
-        ok ? setProducts(data) : null; 
+      .then(({ ok, data }) => {
+        ok ? setProducts(data) : null;
+        setSlidesToShow(data.length === 1 ? 1 : Math.round(data.length / 3));
       })
-      .catch(err => console.error(err))
+      .catch((err) => console.error(err));
   }, []);
 
   return (
@@ -31,29 +33,41 @@ export const Home = () => {
         </Carousel.Item>
       </Carousel>
 
-      <Slider dots={true} speed={500} slidesToShow={4} slidesToScroll={2}>
-        {products.map((product) => {
-          return (
-            <div key={product.id}>
-              <Card style={{ width: "15rem" }} className="my-4 mx-auto">
-                <Card.Img
-                  variant="top"
-                  src={product.images.find(img => img.primary)?.url}
-                  style={{ height: "150px", objectFit: "contain" }}
-                />
-                <Card.Body>
-                  <Card.Title className="fs-6">{product.name}</Card.Title>
-                  <Card.Text style={{ fontSize: ".7rem" }}>
-                    {enfasis(product.description)}
-                  </Card.Text>
-                  <Button as={Link} to={`/products/detail/${product._id}`} variant="primary" className="btn-sm">
-                    Ver mas
-                  </Button>
-                </Card.Body>
-              </Card>
-            </div>
-          );
-        })}
+      <Slider
+        dots={true}
+        speed={500}
+        slidesToShow={slidesToShow}
+        slidesToScroll={2}
+      >
+        {products
+          .filter(({ available }) => available)
+          .map((product) => {
+            return (
+              <div key={product._id}>
+                <Card style={{ width: "15rem" }} className="my-4 mx-auto">
+                  <Card.Img
+                    variant="top"
+                    src={product.images.find((img) => img.primary)?.url}
+                    style={{ height: "150px", objectFit: "contain" }}
+                  />
+                  <Card.Body>
+                    <Card.Title className="fs-6">{product.name}</Card.Title>
+                    <Card.Text style={{ fontSize: ".7rem" }}>
+                      {enfasis(product.description)}
+                    </Card.Text>
+                    <Button
+                      as={Link}
+                      to={`/products/detail/${product._id}`}
+                      variant="primary"
+                      className="btn-sm"
+                    >
+                      Ver mas
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </div>
+            );
+          })}
       </Slider>
     </Layout>
   );

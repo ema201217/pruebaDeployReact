@@ -23,6 +23,7 @@ export const UserProvider = ({ children }) => {
         },
       }).then((res) => res.json());
       ok ? setUser(data) : setUser(userInitialState);
+      data ? localStorage.setItem("user", JSON.stringify(data)) : null;
     } catch (error) {
       console.log(error.message);
     }
@@ -30,9 +31,15 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     const tokenStorage = localStorage.getItem("token");
+    const userStorage = localStorage.getItem("user");
+    const userStorageJS = userStorage ? JSON.parse(userStorage) : null;
     if (tokenStorage) {
       setToken(tokenStorage);
-      getUser(tokenStorage);
+      if (!userStorageJS) {
+        getUser(tokenStorage);
+      } else {
+        setUser(userStorageJS);
+      }
     }
   }, []);
 
