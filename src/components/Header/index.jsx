@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import logo from "../../../public/logo.png";
 import {
   Button,
   Container,
@@ -31,7 +30,7 @@ export const Header = () => {
     <Navbar bg="light" expand="lg">
       <Container fluid>
         <Navbar.Brand as={Link} to="/">
-          <Image src={logo} alt="logo" />
+          <Image src="public/logo.png" alt="logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
