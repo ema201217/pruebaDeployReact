@@ -30,7 +30,7 @@ export const Header = () => {
     <Navbar bg="light" expand="lg">
       <Container fluid>
         <Navbar.Brand as={Link} to="/">
-          <Image src="public/logo.png" alt="logo" />
+          <Image src="logo.png" alt="logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
